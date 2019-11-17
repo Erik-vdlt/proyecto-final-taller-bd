@@ -30,4 +30,10 @@ public class LibroDAO {
         return c.ejecutarInstruccionSQL(sql);
     }
     
+    public void eliminarLibro(int clave,conexionBD c){
+        String sql = "DELETE FROM LIBRO WHERE id_libro = "+clave;
+        
+        c.ejecutarInstruccionSQL(sql);
+    }
+    
 }

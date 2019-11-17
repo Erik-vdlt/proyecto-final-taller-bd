@@ -15,6 +15,7 @@ public class Libro {
     private String titulo;
     private String editorial;
     private String fecha;
+    private String ISBN;
     private String tipoLibro;
     private int genero;
     
@@ -52,6 +53,14 @@ public class Libro {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public String getTipoLibro() {

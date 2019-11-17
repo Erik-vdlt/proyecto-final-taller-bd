@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author erik
  */
 public class Login extends javax.swing.JFrame {
-    conexionBD conexion = conexionBD.getConexionBD("jdbc:db2://localhost:50001/", "Biblio");
+    conexionBD conexion = conexionBD.getConexionBD("jdbc:db2://localhost:50001/", "library");
 
     /**
      * Creates new form Login
