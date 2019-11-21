@@ -23,6 +23,18 @@ public class Libro {
         
     }
 
+    public Libro(int id_libro, String titulo, String editorial, String fecha, String ISBN, String tipoLibro, int genero) {
+        this.id_libro = id_libro;
+        this.titulo = titulo;
+        this.editorial = editorial;
+        this.fecha = fecha;
+        this.ISBN = ISBN;
+        this.tipoLibro = tipoLibro;
+        this.genero = genero;
+    }
+    
+    
+
     public int getId_libro() {
         return id_libro;
     }

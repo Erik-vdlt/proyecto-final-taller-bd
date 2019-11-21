@@ -162,17 +162,14 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRadioButton5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="cj_genero" min="-2" pref="140" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="cmb_tipolibro" min="-2" pref="140" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cmb_tipolibro" pref="140" max="32767" attributes="0"/>
+                              <Component id="cmb_generos" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="cj_isbn" min="-2" pref="219" max="-2" attributes="0"/>
@@ -196,11 +193,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cj_titulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cj_genero" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_years" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmb_generos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -243,8 +240,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="cj_genero">
         </Component>
         <Component class="javax.swing.JButton" name="btn_aceptar">
           <Properties>
@@ -292,13 +287,8 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_years">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="cmb_years" name="getModel" type="method"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -329,6 +319,26 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Genero:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmb_generos">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="9">
+                <StringItem index="0" value="Cuento"/>
+                <StringItem index="1" value="Novela"/>
+                <StringItem index="2" value="Fabula"/>
+                <StringItem index="3" value="Tragedia"/>
+                <StringItem index="4" value="Comedia"/>
+                <StringItem index="5" value="Melodrama"/>
+                <StringItem index="6" value="Ensayo"/>
+                <StringItem index="7" value="Biografia"/>
+                <StringItem index="8" value="Cronica"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -361,17 +371,23 @@
             <Component class="javax.swing.JTable" name="tablaLibro">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="7">
+                  <Table columnCount="7" rowCount="7">
                     <Column editable="true" title="Id Libro" type="java.lang.Object"/>
                     <Column editable="true" title="Titulo" type="java.lang.Object"/>
                     <Column editable="true" title="Editorial" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha" type="java.lang.Object"/>
+                    <Column editable="true" title="A&#xf1;o" type="java.lang.Object"/>
+                    <Column editable="true" title="ISBN" type="java.lang.Object"/>
                     <Column editable="true" title="Tipo Libro" type="java.lang.Object"/>
                     <Column editable="true" title="Genero" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

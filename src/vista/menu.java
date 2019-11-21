@@ -11,9 +11,9 @@ package vista;
  */
 public class menu extends javax.swing.JFrame {
     
-    conexionBD.conexionBD o = null;
+    conexionBD.conexionBD o;
     //menu m = new menu();
-    VistaLibro l = new VistaLibro(o);
+    
     
     /**
      * Creates new form menu
@@ -125,6 +125,8 @@ public class menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        VistaLibro l = new VistaLibro(o);
+        System.out.println(o);
         setVisible(false);
         l.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

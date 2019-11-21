@@ -5,20 +5,21 @@
  */
 package conexionBD;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import com.ibm.db2.jcc.DB2PreparedStatement;//mysql.jdbc.PreparedStatement;
 
 /**
  *
  * @author erik
  */
 public class conexionBD {
-    private static Connection con=null;
+    private static Connection con = null;
     private Statement stm;
     private static conexionBD miConexionBD;
     public static String usuario;
@@ -26,6 +27,8 @@ public class conexionBD {
     private String url;
     private String bd;
     boolean flag = false;
+    ResultSet rs;
+    
 
     public static String getUsuario() {
         return usuario;
@@ -129,4 +132,24 @@ public class conexionBD {
         }
         return x;
      }
+     
+     public ResultSet consultarRegistros(String sql) {
+		
+	try {
+            //stm = con.prepareStatement(sql);
+            stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = stm.executeQuery(sql);
+	} catch (SQLException e) {
+            e.printStackTrace();
+	}
+            /*finally {
+            try {
+            con.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+            }*/
+	        System.out.println("rs de consultar registros "+rs);
+	return rs;
+    }
 }
