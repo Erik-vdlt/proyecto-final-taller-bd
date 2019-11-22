@@ -30,14 +30,14 @@ public class GenerosDAO {
         
         try {
             if(rs.next()){
-                System.out.println("el rs del nuevo metodo --> "+rs.getInt(1));
+               
                 g = new Generos(rs.getInt(1));
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(GenerosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("el genero es --> "+g.getId_genero());
+        
         return g.getId_genero();
     }
     
@@ -54,9 +54,9 @@ public class GenerosDAO {
 	//String instruccionSQL = "SELECT * FROM alumnos WHERE primerAp = '"+filtro+"'";
         String instruccionSQL = "SELECT nombre_genero FROM Generos";
         //System.out.println("conexionBD.GenerosDAO.buscarAlumnos() "+c.consultarRegistros(instruccionSQL));
-        System.out.println("conexion busqueda "+c);
+        
 	ResultSet rs = c.consultarRegistros(instruccionSQL);
-        System.out.println("rs: "+rs);
+        
                 //.consultarRegistros(instruccionSQL);
 		
 	try {

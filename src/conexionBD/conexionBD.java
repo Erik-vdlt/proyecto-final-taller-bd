@@ -12,7 +12,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.ibm.db2.jcc.DB2PreparedStatement;//mysql.jdbc.PreparedStatement;
+import com.ibm.db2.jcc.DB2PreparedStatement;
+import java.sql.PreparedStatement;//mysql.jdbc.PreparedStatement;
 
 /**
  *
@@ -28,6 +29,7 @@ public class conexionBD {
     private String bd;
     boolean flag = false;
     ResultSet rs;
+    PreparedStatement pstmt;
     
 
     public static String getUsuario() {
@@ -149,7 +151,31 @@ public class conexionBD {
             e.printStackTrace();
             }
             }*/
-	        System.out.println("rs de consultar registros "+rs);
+	return rs;
+    }
+     
+     public ResultSet consultarRegistrosMultiples(String clave,String valor) {
+		
+	try {
+            //stm = con.prepareStatement(sql);
+            //stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            //stm = con.prepareStatement("select * from Lector where "+clave+" = ? ");
+            //stm.s
+            pstmt = con.prepareStatement("select * from Libro where "+clave+" = ? ");
+            pstmt.setString(1, valor);
+            System.out.println("metodo consultar registros multiples(conexionBD) "+rs);
+            rs = pstmt.executeQuery();
+	} catch (SQLException e) {
+            e.printStackTrace();
+	}
+            /*finally {
+            try {
+            con.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+            }*/
+            
 	return rs;
     }
 }

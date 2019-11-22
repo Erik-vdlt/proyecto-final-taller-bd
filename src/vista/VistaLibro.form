@@ -112,59 +112,47 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="btn_aceptar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chk_id" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="chk_titulo" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_id" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_aceptar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cj_id" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cj_editorial" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="btn_actualizar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="btn_buscar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cj_titulo" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="chk_year" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="cj_id" min="-2" pref="140" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="chk_editorial" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
+                                      <Component id="cj_titulo" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btn_actualizar" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                          <Component id="btn_buscar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="cmb_years" min="-2" pref="140" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="cj_editorial" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="cmb_years" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chk_tipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chk_genero" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -172,7 +160,7 @@
                               <Component id="cmb_generos" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="cj_isbn" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="cj_isbn" min="-2" pref="225" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
@@ -187,17 +175,17 @@
                       <Component id="cj_editorial" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_tipolibro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="chk_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_editorial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_tipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cj_titulo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_years" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_titulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_genero" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_generos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_year" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -275,6 +263,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="chk_id">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Id Libro"/>
           </Properties>
         </Component>
@@ -295,28 +286,46 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="chk_editorial">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Editorial:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="chk_tipo">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tipo Libro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+        <Component class="javax.swing.JRadioButton" name="chk_titulo">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Titulo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+        <Component class="javax.swing.JRadioButton" name="chk_year">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o:"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chk_yearActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton5">
+        <Component class="javax.swing.JRadioButton" name="chk_genero">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection component="buttonGroup1" type="bean"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Genero:"/>
           </Properties>
         </Component>

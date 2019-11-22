@@ -8,6 +8,8 @@ import modelo.Libro;
 import conexionBD.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author erik
@@ -59,7 +61,6 @@ public class LibroDAO {
         String instruccionSQL = "SELECT * FROM Libro WHERE id_libro = "+id+"";
         ResultSet rs = conexion.consultarRegistros(instruccionSQL);
         //ResultSet rs = conexion.consultarRegistros(id,id);
-        System.out.println("rs de buscar lector "+rs);
         try{
             if(rs.first()){
                 libro = new Libro(
@@ -75,8 +76,39 @@ public class LibroDAO {
         }catch(SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("objeto libro de buscar libro "+libro);
         return  libro;
+    }
+    
+    public boolean consultaLector(String clave,String valor,JTable tabla,conexionBD conexion){
+        boolean completo = false;
+
+        DefaultTableModel modelo = new DefaultTableModel();
+      //  ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE "+clave+" = '"+valor+"'");
+        ResultSet rs = conexion.consultarRegistrosMultiples(clave,valor);
+        //ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE "+clave+" = "+valor);
+        //ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE IdLector = '"+valor+"'");
+        modelo.setColumnIdentifiers( new Object[] {
+                "Id Libro", "Titulo", "Editorial","Año", "ISBN", "Tipo Libro","Genero"});
+
+
+        try{
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7)});
+                completo = true;
+            }
+            tabla.setModel(modelo);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            completo = false;
+        }
+        return  completo;
     }
     
 }

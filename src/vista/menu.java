@@ -126,7 +126,6 @@ public class menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         VistaLibro l = new VistaLibro(o);
-        System.out.println(o);
         setVisible(false);
         l.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -161,7 +160,7 @@ public class menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                //new menu().setVisible(true);
             }
         });
     }

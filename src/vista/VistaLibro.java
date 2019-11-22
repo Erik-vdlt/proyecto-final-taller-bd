@@ -73,11 +73,11 @@ public class VistaLibro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cj_isbn = new javax.swing.JTextField();
         cmb_years = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        chk_editorial = new javax.swing.JRadioButton();
+        chk_tipo = new javax.swing.JRadioButton();
+        chk_titulo = new javax.swing.JRadioButton();
+        chk_year = new javax.swing.JRadioButton();
+        chk_genero = new javax.swing.JRadioButton();
         cmb_generos = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -139,21 +139,32 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(chk_id);
         chk_id.setText("Id Libro");
 
         jLabel2.setText("ISBN:");
 
         cmb_years.setModel(cmb_years.getModel());
 
-        jRadioButton1.setText("Editorial:");
+        buttonGroup1.add(chk_editorial);
+        chk_editorial.setText("Editorial:");
 
-        jRadioButton2.setText("Tipo Libro:");
+        buttonGroup1.add(chk_tipo);
+        chk_tipo.setText("Tipo Libro:");
 
-        jRadioButton3.setText("Titulo:");
+        buttonGroup1.add(chk_titulo);
+        chk_titulo.setText("Titulo:");
 
-        jRadioButton4.setText("Año");
+        buttonGroup1.add(chk_year);
+        chk_year.setText("Año:");
+        chk_year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chk_yearActionPerformed(evt);
+            }
+        });
 
-        jRadioButton5.setText("Genero:");
+        buttonGroup1.add(chk_genero);
+        chk_genero.setText("Genero:");
 
         cmb_generos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuento", "Novela", "Fabula", "Tragedia", "Comedia", "Melodrama", "Ensayo", "Biografia", "Cronica" }));
 
@@ -162,52 +173,44 @@ public class VistaLibro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(btn_aceptar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButton3)
-                            .addComponent(chk_id)
-                            .addComponent(jLabel2))))
-                .addGap(11, 11, 11)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chk_titulo)
+                    .addComponent(chk_id)
+                    .addComponent(jLabel2)
+                    .addComponent(btn_aceptar))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(cj_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_eliminar)
+                                .addGap(32, 32, 32)
+                                .addComponent(btn_actualizar)
+                                .addGap(36, 36, 36)
+                                .addComponent(btn_buscar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cj_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(btn_eliminar)))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(chk_year)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(cj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(chk_editorial)))
+                                    .addComponent(cj_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_actualizar)
-                                        .addGap(57, 57, 57)
-                                        .addComponent(btn_buscar))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(jRadioButton4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cmb_years, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(cj_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_years, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton5))
+                            .addComponent(chk_tipo)
+                            .addComponent(chk_genero))
                         .addGap(42, 42, 42)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmb_tipolibro, 0, 140, Short.MAX_VALUE)
                             .addComponent(cmb_generos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(cj_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cj_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,16 +222,16 @@ public class VistaLibro extends javax.swing.JFrame {
                     .addComponent(cj_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_tipolibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk_id)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(chk_editorial)
+                    .addComponent(chk_tipo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cj_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_years, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5)
-                    .addComponent(cmb_generos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chk_titulo)
+                    .addComponent(chk_genero)
+                    .addComponent(cmb_generos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chk_year))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -410,10 +413,9 @@ public class VistaLibro extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
         if(chk_id.isSelected()){
-            System.out.println("primer if");
             if(Character.isDigit(cj_id.getText().charAt(0))){
                 ldao.eliminarLibro(Integer.parseInt(cj_id.getText()), co);
-                System.out.println("segundo if");
+                actualizarTabla();
             }
             else {
                 pane.showMessageDialog(pane,"el dato id no es numerico");
@@ -426,7 +428,56 @@ public class VistaLibro extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
-        
+        if(chk_id.isSelected()){
+            if(!cj_id.getText().equals("")){
+                if(Character.isDigit(cj_id.getText().charAt(0))){
+                    ldao.consultaLector("id_libro", cj_id.getText(), tablaLibro, co);
+                }
+            }
+        }
+        //else{
+        //    pane.showMessageDialog(pane,"seleccione un checkbutton");
+        //}
+        else if(chk_titulo.isSelected()){
+            if(!cj_titulo.getText().equals("")){
+                if(Character.isAlphabetic(cj_titulo.getText().charAt(0))){
+                    System.out.println("vista.VistaLibro.btn_buscarActionPerformed()"+cj_titulo.getText());
+                    ldao.consultaLector("Titulo", cj_titulo.getText(), tablaLibro, co);
+                }
+                else{
+                pane.showMessageDialog(pane,"la caja titulo tiene el tipo de dato incorrecto");
+                }
+            }
+            else{
+                pane.showMessageDialog(pane,"la caja titulo esta vacia");
+            }
+        }
+        else if(chk_editorial.isSelected()){
+            if(!cj_editorial.getText().equals("")){
+                if(Character.isAlphabetic(cj_editorial.getText().charAt(0))){
+                    ldao.consultaLector("Editorial", cj_editorial.getText(), tablaLibro, co);
+                }
+                else{
+                pane.showMessageDialog(pane,"la caja editorial tiene el tipo de dato incorrecto");
+                }
+            }
+            else{
+                pane.showMessageDialog(pane,"la caja editorial esta vacia");
+            }
+        }
+        else if(chk_year.isSelected()){
+            ldao.consultaLector("Year", String.valueOf(cmb_years.getSelectedItem()), tablaLibro, co);
+        }
+        else if(chk_tipo.isSelected()){
+            ldao.consultaLector("tipo_libro", String.valueOf(cmb_tipolibro.getSelectedItem()), tablaLibro, co);
+        }
+        else if(chk_genero.isSelected()){
+            int x = gnd.claveId(String.valueOf(cmb_generos.getSelectedItem()), co);
+            ldao.consultaLector("Genero", String.valueOf(x), tablaLibro, co);
+        }
+        else{
+            pane.showMessageDialog(pane,"seleccione un checkbutton");
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -436,7 +487,7 @@ public class VistaLibro extends javax.swing.JFrame {
                 pane.showMessageDialog(pane,"ingrese un identificador");
             }
             else if(!cj_id.getText().equalsIgnoreCase("") && !cj_titulo.getText().equals("") && !cj_editorial.getText().equals("") && !cj_isbn.getText().equals("")){
-                System.out.println("cajas ! de vacio" + lib);
+                
                 lib.setTitulo(cj_titulo.getText());
                 lib.setEditorial(cj_editorial.getText());
                 lib.setFecha(String.valueOf(cmb_years.getSelectedItem()));
@@ -445,12 +496,12 @@ public class VistaLibro extends javax.swing.JFrame {
                 //lib.setGenero(Integer.parseInt(String.valueOf(cmb_generos.getSelectedItem())));
                 lib.setGenero(gnd.claveId(String.valueOf(cmb_generos.getSelectedItem()), co));
                 ldao.modificarLibro(lib, co);
+                actualizarTabla();
             }
             else{
                 if(Character.isDigit(cj_id.getText().charAt(0))){
                     
                     lib = ldao.buscarLector(Integer.parseInt(cj_id.getText()), co);
-                    System.out.println(lib);
                     cmb_years.setSelectedItem(lib.getFecha());
                     cj_editorial.setText(lib.getEditorial());
                     cj_titulo.setText(lib.getTitulo());
@@ -467,6 +518,10 @@ public class VistaLibro extends javax.swing.JFrame {
         
         //actualizarTabla();
     }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void chk_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk_yearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chk_yearActionPerformed
     
     public void yearsCombo(JComboBox combo){
         for (int i = 1400; i < 2019; i++) {
@@ -484,7 +539,6 @@ public class VistaLibro extends javax.swing.JFrame {
             //comboG.addItem(lista.get(i));
             comboG.addItem(nuevo.getGenero());
         }
-        System.out.println("generos "+nuevo);
     }
     
     /**
@@ -510,7 +564,6 @@ public class VistaLibro extends javax.swing.JFrame {
 			e1.printStackTrace();
 		}
 		
-            System.out.println();
             tablaLibro.setModel(modelo);
 	}
     
@@ -554,7 +607,12 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_regreso;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton chk_editorial;
+    private javax.swing.JRadioButton chk_genero;
     private javax.swing.JRadioButton chk_id;
+    private javax.swing.JRadioButton chk_tipo;
+    private javax.swing.JRadioButton chk_titulo;
+    private javax.swing.JRadioButton chk_year;
     private javax.swing.JTextField cj_editorial;
     private javax.swing.JTextField cj_id;
     private javax.swing.JTextField cj_isbn;
@@ -570,11 +628,6 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable tablaLibro;
