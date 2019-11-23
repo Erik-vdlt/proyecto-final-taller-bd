@@ -5,17 +5,38 @@
  */
 package vista;
 
+import conexionBD.LectorDAO;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import modelo.Lector;
+
 /**
  *
  * @author erik
  */
 public class VistaLector extends javax.swing.JFrame {
-
+    
+    JOptionPane a;
+    Lector lector = new Lector();
+    LectorDAO ldao = new LectorDAO();
+    conexionBD.conexionBD co;
+    
     /**
      * Creates new form VistaLector
      */
     public VistaLector() {
         initComponents();
+    }
+    
+    public VistaLector(conexionBD.conexionBD co){
+        this.co = co;
+        initComponents();
+        dias(cmb_dia);
+        años(cmb_year);
+        actualizarTabla();
     }
 
     /**
@@ -27,9 +48,13 @@ public class VistaLector extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -82,6 +107,39 @@ public class VistaLector extends javax.swing.JFrame {
         });
         jToolBar1.add(btn_agregar);
 
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setFocusable(false);
+        btn_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_eliminar);
+
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setFocusable(false);
+        btn_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_actualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_actualizar);
+
+        btn_buscar.setText("Buscar");
+        btn_buscar.setFocusable(false);
+        btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_buscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_buscar);
+
         jPanel1.setBackground(new java.awt.Color(133, 205, 186));
 
         jLabel1.setBackground(new java.awt.Color(133, 205, 186));
@@ -106,28 +164,33 @@ public class VistaLector extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(81, 72, 72));
 
+        bg.add(rd_id);
         rd_id.setText("Id Lector:");
 
+        bg.add(rd_nombre);
         rd_nombre.setText("Nombre:");
 
+        bg.add(rd_primerAp);
         rd_primerAp.setText("Primer Apellido:");
 
+        bg.add(rd_segundoAp);
         rd_segundoAp.setText("Segundo Apellido:");
 
+        bg.add(rd_fecha);
         rd_fecha.setText("Fecha:");
 
+        bg.add(rd_telefono);
         rd_telefono.setText("Telefono:");
 
-        cmb_dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
-        cmb_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        bg.add(rd_calle);
         rd_calle.setText("Calle:");
 
+        bg.add(rd_noCalle);
         rd_noCalle.setText("# Calle:");
 
+        bg.add(rd_colonia);
         rd_colonia.setText("Colonia:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -279,9 +342,397 @@ public class VistaLector extends javax.swing.JFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         // TODO add your handling code here:
+        boolean x = false,x1 = false,x2 = false,x3 = false,x4 = false,x5 = false,x6 = false,x7 = false;
+        if(!cj_idLector.getText().equals("")){
+            if(Character.isDigit(cj_idLector.getText().charAt(0))){
+                x=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja id no tiene el tipo de dato numerico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja id esta vacia");
+        }
+        if(!cj_nombre.getText().equals("")){
+            if(Character.isAlphabetic(cj_nombre.getText().charAt(0))){
+                x1=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja nombre no tiene el tipo de dato alfabetico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja id esta vacia");
+        }
+        if(!cj_primerAp.getText().equals("")){
+            if(Character.isAlphabetic(cj_primerAp.getText().charAt(0))){
+                x2=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja primer apellido no tiene el tipo de dato alfabetico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja primer apellido esta vacia");
+        }
+        if(!cj_segundoAp.getText().equals("")){
+            if(Character.isAlphabetic(cj_segundoAp.getText().charAt(0))){
+                x3=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja segundo apellido no tiene el tipo de dato alfabetico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja segundo apellido esta vacia");
+        }
+        if(!cj_telefono.getText().equals("")){
+            if(Character.isDigit(cj_telefono.getText().charAt(0))){
+                x4=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja telefono no tiene el tipo de dato numerico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja telefono esta vacia");
+        }
+        if(!cj_calle.getText().equals("")){
+            if(Character.isAlphabetic(cj_calle.getText().charAt(0))){
+                x5=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja calle no tiene el tipo de dato alfabetico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja calle esta vacia");
+        }
+        if(!cj_noCalle.getText().equals("")){
+            if(Character.isLetterOrDigit(cj_noCalle.getText().charAt(0))){
+                x6=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja noCalle no tiene el tipo de dato numerico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja noCalle esta vacia");
+        }
+        if(!cj_colonia.getText().equals("")){
+            if(Character.isAlphabetic(cj_colonia.getText().charAt(0))){
+                x7=true;
+            }
+            else{
+                a.showMessageDialog(a, "la caja colonia no tiene el tipo de dato alfabetico");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "la caja colonia esta vacia");
+        }
+        
+        if(x && x1 && x2 && x3 && x4 && x5 && x6 && x7){
+            lector.setId_lector(Integer.parseInt(cj_idLector.getText()));
+            lector.setNombre(cj_nombre.getText());
+            lector.setPrimerAp(cj_primerAp.getText());
+            lector.setSegundoAp(cj_segundoAp.getText());
+            String y = String.valueOf(cmb_year.getSelectedItem());
+            String m = String.valueOf(cmb_mes.getSelectedItem());
+            int mm = meses(m);
+            String d = String.valueOf(cmb_dia.getSelectedItem());
+            lector.setFecha(y+"-"+mm+"-"+d);
+            lector.setTelefono(cj_telefono.getText());
+            lector.setCalle(cj_calle.getText());
+            lector.setNoCalle(cj_noCalle.getText());
+            lector.setColonia(cj_colonia.getText());
+            System.out.println("fecha --> "+y+"-"+m+"-"+d);
+            System.out.println("lector --> "+lector);
+            ldao.agregarLector(lector, co);
+            actualizarTabla();
+        }
         
     }//GEN-LAST:event_btn_agregarActionPerformed
 
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO add your handling code here:
+        if(rd_id.isSelected()){
+            if(!cj_idLector.getText().equals("")){
+                if(Character.isDigit(cj_idLector.getText().charAt(0))){
+                    ldao.eliminarLector(Integer.parseInt(cj_idLector.getText()), co);
+                    actualizarTabla();
+                }
+                else{
+                    a.showMessageDialog(a, "el id debe se numerico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja id esta vacia");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "el radiobutton id no esta seleccionado");
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        // TODO add your handling code here:
+        if(rd_id.isSelected()){
+            if(!cj_idLector.getText().equals("")){
+                if(Character.isDigit(cj_idLector.getText().charAt(0))){
+                    if(cj_nombre.getText().equals("") && cj_primerAp.getText().equals("") && cj_segundoAp.getText().equals("") &&
+                       cj_telefono.getText().equals("") && cj_calle.getText().equals("") && cj_noCalle.getText().equals("")
+                        && cj_colonia.getText().equals("")){
+                        
+                        lector = ldao.buscarLector(Integer.parseInt(cj_idLector.getText()), co);
+                        cj_nombre.setText(lector.getNombre());
+                        cj_primerAp.setText(lector.getPrimerAp());
+                        cj_segundoAp.setText(lector.getSegundoAp());
+                        cj_telefono.setText(lector.getTelefono());
+                        cj_calle.setText(lector.getCalle());
+                        cj_noCalle.setText(lector.getNoCalle());
+                        cj_colonia.setText(lector.getColonia());
+                    }
+                    else if(!cj_nombre.getText().equals("") && !cj_primerAp.getText().equals("") && !cj_segundoAp.getText().equals("") &&
+                       !cj_telefono.getText().equals("") && !cj_calle.getText().equals("") && !cj_noCalle.getText().equals("")
+                        && !cj_colonia.getText().equals("")){
+                        
+                        lector.setNombre(cj_nombre.getText());
+                        lector.setPrimerAp(cj_primerAp.getText());
+                        lector.setSegundoAp(cj_segundoAp.getText());
+                        String y = String.valueOf(cmb_year.getSelectedItem());
+                        String m = String.valueOf(cmb_mes.getSelectedItem());
+                        int mm = meses(m);
+                        String d = String.valueOf(cmb_dia.getSelectedItem());
+                        lector.setFecha(y+"-"+mm+"-"+d);
+                        lector.setTelefono(cj_telefono.getText());
+                        lector.setCalle(cj_calle.getText());
+                        lector.setNoCalle(cj_noCalle.getText());
+                        lector.setColonia(cj_colonia.getText());
+                        
+                        System.out.println("vista.VistaLector.btn_actualizarActionPerformed() --> "+lector);
+                        
+                        ldao.modificarLector(lector, co);
+                        actualizarTabla();
+                    }
+                }
+                else{
+                    a.showMessageDialog(a, "debe ser un digito en la caja id");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "debe insertar un dato en la caja id");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "debe seleccionar el radiobutton id");
+        }
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        // TODO add your handling code here:
+        if(rd_id.isSelected()){
+            if(!cj_idLector.getText().equals("")){
+                if(Character.isDigit(cj_idLector.getText().charAt(0))){
+                    ldao.consultaLector("id_lector", cj_idLector.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja id no es numerico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja id esta vacia");
+            }
+        }
+        else if(rd_nombre.isSelected()){
+            if(!cj_nombre.getText().equals("")){
+                if(Character.isAlphabetic(cj_nombre.getText().charAt(0))){
+                    ldao.consultaLector("nombre_lector",cj_nombre.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja nombre no es alfabetico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja nombre esta vacia");
+            }
+        }
+        else if(rd_primerAp.isSelected()){
+            if(!cj_primerAp.getText().equals("")){
+                if(Character.isAlphabetic(cj_primerAp.getText().charAt(0))){
+                    ldao.consultaLector("primer_ap_lector",cj_primerAp.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja primer apellido no es alfabetico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja primer apellido esta vacia");
+            }
+        }
+        else if(rd_segundoAp.isSelected()){
+            if(!cj_segundoAp.getText().equals("")){
+                if(Character.isAlphabetic(cj_segundoAp.getText().charAt(0))){
+                    ldao.consultaLector("segundo_ap_lector",cj_segundoAp.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja segundo apellido no es alfabetico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja segundo apellido esta vacia");
+            }
+        }
+        else if(rd_fecha.isSelected()){
+            String y = String.valueOf(cmb_year.getSelectedItem());
+            String m = String.valueOf(cmb_mes.getSelectedItem());
+            String d = String.valueOf(cmb_dia.getSelectedItem());
+            int mm = meses(m);
+            String clave = y+"-"+mm+"-"+d;
+            ldao.consultaLector("fecha_nacimiento_lector",clave, tablaLector, co);    
+        }
+        else if(rd_telefono.isSelected()){
+            if(!cj_telefono.getText().equals("")){
+                if(Character.isDigit(cj_telefono.getText().charAt(0))){
+                    ldao.consultaLector("telefono",cj_telefono.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja telefono no es numerico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja telefono esta vacia");
+            }
+        }
+        else if(rd_calle.isSelected()){
+            if(!cj_calle.getText().equals("")){
+                if(Character.isAlphabetic(cj_calle.getText().charAt(0))){
+                    ldao.consultaLector("calle",cj_calle.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja calle no es alfabetico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja calle esta vacia");
+            }
+        }
+        else if(rd_noCalle.isSelected()){
+            if(!cj_noCalle.getText().equals("")){
+                if(Character.isAlphabetic(cj_noCalle.getText().charAt(0))){
+                    ldao.consultaLector("numero_calle",cj_noCalle.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja noCalle no es alfanumerico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja noCalle esta vacia");
+            }
+        }
+        else if(rd_colonia.isSelected()){
+            if(!cj_colonia.getText().equals("")){
+                if(Character.isAlphabetic(cj_colonia.getText().charAt(0))){
+                    ldao.consultaLector("colonia",cj_colonia.getText(), tablaLector, co);
+                }
+                else{
+                    a.showMessageDialog(a, "el contenido de la caja colonia no es alfabetico");
+                }
+            }
+            else{
+                a.showMessageDialog(a, "la caja colonia esta vacia");
+            }
+        }
+        else{
+            a.showMessageDialog(a, "ningun radiobutton esta seleccionado");
+        }
+        
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    
+    public void dias(JComboBox combo){
+        for (int i = 1; i <= 31; i++) {
+            combo.addItem(i);
+        }
+    }
+    
+    public void años(JComboBox combo){
+        //Date f = new Date();
+        Calendar c = Calendar.getInstance();
+        int annio = c.get(Calendar.YEAR);
+        for (int i = 1919; i <= annio; i++) {
+            combo.addItem(i);
+        }
+    }
+    
+    public int meses(String mes){
+        int month = 0;
+        switch(mes){
+            case "Enero":
+                month = 1;
+                break;
+            case "Febrero":
+                month = 2;
+                break;
+            case "Marzo":
+                month = 3;
+                break;
+            case "Abril":
+                month = 4;
+                break;
+            case "Mayo":
+                month = 5;
+                break;
+            case "Junio":
+                month = 6;
+                break;
+            case "Julio":
+                month = 7;
+                break;
+            case "Agosto":
+                month = 8;
+                break;
+            case "Septiembre":
+                month = 9;
+                break;
+            case "Octubre":
+                month = 10;
+                break;
+            case "Noviembre":
+                month = 11;
+                break;    
+            case "Diciembre":
+                month = 12;
+                break;
+            default:
+                month = 0;
+                break;
+        }
+        return month;
+    }
+    
+    public void actualizarTabla() {
+		final String TABLA_LIBRO = "Lector";
+		//conexionBD conexion = new conexionBD();
+
+		String driver = "com.ibm.db2.jcc.DB2Driver";
+		String url = "jdbc:db2://localhost:50001/library";
+		//String user = "root";
+		//String password = "root1";
+		String query = "SELECT * FROM " + TABLA_LIBRO;
+
+		ResultSetTableModel2 modelo = null;
+		try {
+			modelo = new ResultSetTableModel2(driver, url, co.getUsuario(), co.getContra(), query);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		
+            tablaLector.setModel(modelo);
+	}
+    
     /**
      * @param args the command line arguments
      */
@@ -318,7 +769,11 @@ public class VistaLector extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg;
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JTextField cj_calle;
     private javax.swing.JTextField cj_colonia;
     private javax.swing.JTextField cj_idLector;

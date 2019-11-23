@@ -13,6 +13,7 @@ public class menu extends javax.swing.JFrame {
     
     conexionBD.conexionBD o;
     //menu m = new menu();
+    VistaLector vl;
     
     
     /**
@@ -42,7 +43,8 @@ public class menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        cj_libro = new javax.swing.JButton();
+        cj_lector = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -73,10 +75,17 @@ public class menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(88, 155, 191));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/libro.jpg")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cj_libro.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/libro.jpg")); // NOI18N
+        cj_libro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cj_libroActionPerformed(evt);
+            }
+        });
+
+        cj_lector.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/lector.jpg")); // NOI18N
+        cj_lector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cj_lectorActionPerformed(evt);
             }
         });
 
@@ -86,15 +95,19 @@ public class menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cj_libro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cj_lector)
+                .addGap(33, 33, 33))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cj_lector)
+                    .addComponent(cj_libro))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         jMenu3.setText("File");
@@ -123,12 +136,19 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cj_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cj_libroActionPerformed
         // TODO add your handling code here:
         VistaLibro l = new VistaLibro(o);
         setVisible(false);
         l.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cj_libroActionPerformed
+
+    private void cj_lectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cj_lectorActionPerformed
+        // TODO add your handling code here:
+        vl = new VistaLector(o);
+        setVisible(false);
+        vl.setVisible(true);
+    }//GEN-LAST:event_cj_lectorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,7 +186,8 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton cj_lector;
+    private javax.swing.JButton cj_libro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;

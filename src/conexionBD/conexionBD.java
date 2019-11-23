@@ -12,7 +12,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.ibm.db2.jcc.DB2PreparedStatement;
 import java.sql.PreparedStatement;//mysql.jdbc.PreparedStatement;
 
 /**
@@ -154,14 +153,14 @@ public class conexionBD {
 	return rs;
     }
      
-     public ResultSet consultarRegistrosMultiples(String clave,String valor) {
+     public ResultSet consultarRegistrosMultiples(String clave,String valor,String tabla) {
 		
 	try {
             //stm = con.prepareStatement(sql);
             //stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             //stm = con.prepareStatement("select * from Lector where "+clave+" = ? ");
             //stm.s
-            pstmt = con.prepareStatement("select * from Libro where "+clave+" = ? ");
+            pstmt = con.prepareStatement("select * from "+tabla+" where "+clave+" = ? ");
             pstmt.setString(1, valor);
             System.out.println("metodo consultar registros multiples(conexionBD) "+rs);
             rs = pstmt.executeQuery();

@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class LibroDAO {
     
     //conexionBD b;
+    private final String TABLA = "libro";
     
     public LibroDAO(){
         
@@ -84,7 +85,7 @@ public class LibroDAO {
 
         DefaultTableModel modelo = new DefaultTableModel();
       //  ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE "+clave+" = '"+valor+"'");
-        ResultSet rs = conexion.consultarRegistrosMultiples(clave,valor);
+        ResultSet rs = conexion.consultarRegistrosMultiples(clave,valor,TABLA);
         //ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE "+clave+" = "+valor);
         //ResultSet rs = conexion.consultarRegistros("SELECT * FROM Lector WHERE IdLector = '"+valor+"'");
         modelo.setColumnIdentifiers( new Object[] {
