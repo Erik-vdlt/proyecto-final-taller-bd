@@ -26,6 +26,7 @@ public class VistaLibro extends javax.swing.JFrame {
     LibroDAO ldao = new LibroDAO();
     GenerosDAO gnd = new GenerosDAO();
     conexionBD co;
+    VistaPrestamo vp;
     menu menu;
     JOptionPane pane;
     ArrayList lista = new ArrayList();
@@ -60,7 +61,7 @@ public class VistaLibro extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pn_componentes = new javax.swing.JPanel();
         cj_id = new javax.swing.JTextField();
         cj_titulo = new javax.swing.JTextField();
         cj_editorial = new javax.swing.JTextField();
@@ -79,6 +80,7 @@ public class VistaLibro extends javax.swing.JFrame {
         chk_year = new javax.swing.JRadioButton();
         chk_genero = new javax.swing.JRadioButton();
         cmb_generos = new javax.swing.JComboBox<>();
+        btn_prestamo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLibro = new javax.swing.JTable();
@@ -168,56 +170,65 @@ public class VistaLibro extends javax.swing.JFrame {
 
         cmb_generos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuento", "Novela", "Fabula", "Tragedia", "Comedia", "Melodrama", "Ensayo", "Biografia", "Cronica" }));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btn_prestamo.setText("prestamo");
+        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prestamoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pn_componentesLayout = new javax.swing.GroupLayout(pn_componentes);
+        pn_componentes.setLayout(pn_componentesLayout);
+        pn_componentesLayout.setHorizontalGroup(
+            pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_componentesLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(chk_titulo)
                     .addComponent(chk_id)
                     .addComponent(jLabel2)
                     .addComponent(btn_aceptar))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_componentesLayout.createSequentialGroup()
+                        .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_componentesLayout.createSequentialGroup()
                                 .addComponent(btn_eliminar)
                                 .addGap(32, 32, 32)
                                 .addComponent(btn_actualizar)
                                 .addGap(36, 36, 36)
-                                .addComponent(btn_buscar))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btn_buscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_prestamo))
+                            .addGroup(pn_componentesLayout.createSequentialGroup()
+                                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(chk_year)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(pn_componentesLayout.createSequentialGroup()
                                             .addComponent(cj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(chk_editorial)))
                                     .addComponent(cj_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cj_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmb_years, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chk_tipo)
                             .addComponent(chk_genero))
                         .addGap(42, 42, 42)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmb_tipolibro, 0, 140, Short.MAX_VALUE)
                             .addComponent(cmb_generos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(cj_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pn_componentesLayout.setVerticalGroup(
+            pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_componentesLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cj_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cj_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_tipolibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,7 +236,7 @@ public class VistaLibro extends javax.swing.JFrame {
                     .addComponent(chk_editorial)
                     .addComponent(chk_tipo))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cj_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_years, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk_titulo)
@@ -233,15 +244,16 @@ public class VistaLibro extends javax.swing.JFrame {
                     .addComponent(cmb_generos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk_year))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cj_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_aceptar)
                     .addComponent(btn_eliminar)
                     .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar))
+                    .addComponent(btn_buscar)
+                    .addComponent(btn_prestamo))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -303,7 +315,7 @@ public class VistaLibro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_componentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -315,7 +327,7 @@ public class VistaLibro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_componentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -522,6 +534,12 @@ public class VistaLibro extends javax.swing.JFrame {
     private void chk_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk_yearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chk_yearActionPerformed
+
+    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
+        // TODO add your handling code here:
+        vp = new VistaPrestamo(co);
+        vp.setVisible(true);
+    }//GEN-LAST:event_btn_prestamoActionPerformed
     
     public void yearsCombo(JComboBox combo){
         for (int i = 1400; i < 2019; i++) {
@@ -605,6 +623,7 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_prestamo;
     private javax.swing.JButton btn_regreso;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton chk_editorial;
@@ -626,10 +645,10 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPanel pn_componentes;
     private javax.swing.JTable tablaLibro;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,7 +50,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+          <Component id="pn_componentes" alignment="0" max="32767" attributes="0"/>
           <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
           <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
           <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
@@ -63,7 +63,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Component id="pn_componentes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -106,7 +106,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="pn_componentes">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -122,13 +122,15 @@
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Component id="btn_actualizar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="btn_buscar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btn_prestamo" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -198,6 +200,7 @@
                       <Component id="btn_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_prestamo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
@@ -348,6 +351,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_prestamo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="prestamo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_prestamoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

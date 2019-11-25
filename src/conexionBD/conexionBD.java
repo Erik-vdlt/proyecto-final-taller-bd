@@ -177,4 +177,28 @@ public class conexionBD {
             
 	return rs;
     }
+     
+    public ResultSet consultarAvanzada(String sql) {
+		
+	try {
+            //stm = con.prepareStatement(sql);
+            //stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            //stm = con.prepareStatement("select * from Lector where "+clave+" = ? ");
+            //stm.s
+            pstmt = con.prepareStatement(sql);
+            //pstmt.setString(1, valor);
+            rs = pstmt.executeQuery();
+	} catch (SQLException e) {
+            e.printStackTrace();
+	}
+            /*finally {
+            try {
+            con.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+            }*/
+            
+	return rs;
+    } 
 }
