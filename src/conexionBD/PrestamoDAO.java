@@ -31,19 +31,31 @@ public class PrestamoDAO {
         String instruccionSQL = "select "+cad+" from prestamo"
                 +" inner join libro on "+filtros.get(0)+" and "+filtros.get(1);
         
+        ResultSet rs = co.consultarAvanzada(instruccionSQL);
+        Object columnas[] = new Object[atributos.size()];
+        for (int i = 0; i < atributos.size(); i++) {
+            columnas[i]= atributos.get(i);
+            
+        }
         DefaultTableModel modelo = new DefaultTableModel();
         
-        ResultSet rs = co.consultarAvanzada(instruccionSQL);
+        modelo.setColumnIdentifiers( columnas);
+        //"Libro Id", "Lector Id", "Fecha Prestamo","Fecha Devolucion", "Multa", "Titulo","Editorial",
+          //      "Año","ISBN","Tipo Libro","Genero"
+        Object filas[] = new Object[modelo.getColumnCount()];
+          
         
-        modelo.setColumnIdentifiers( new Object[] {
-                "Libro Id", "Lector Id", "Fecha Prestamo","Fecha Devolucion", "Multa", "Titulo","Editorial",
-                "Año","ISBN","Tipo Libro","Genero"});
-        
-        
+        int count = 1;
         try{
             while(rs.next()){
-                modelo.addRow(new Object[]{
-                        rs.getString(1),
+                for (int i = 0; i < filas.length; i++) {
+                    filas[i] = rs.getString(i+1);
+                    
+                }
+                modelo.addRow(filas);
+               // modelo.addRow(new Object[]{
+                 //  rs.getString(count),
+                        /*rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
@@ -53,7 +65,7 @@ public class PrestamoDAO {
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11)});
+                        rs.getString(11)*///});
                 completo = true;
             }
             tabla.setModel(modelo);

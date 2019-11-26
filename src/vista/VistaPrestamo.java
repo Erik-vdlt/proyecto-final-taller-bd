@@ -330,14 +330,10 @@ public class VistaPrestamo extends javax.swing.JFrame {
 
         t_prestamo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Libro_Id", "Lector_Id", "Fecha Prestamo", "Fecha Devolucion", "Multa", "Titulo", "Editorial", "Año", "ISBN", "Tipo Libro", "Genero"
+
             }
         ));
         jScrollPane1.setViewportView(t_prestamo);
