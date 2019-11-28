@@ -54,7 +54,7 @@ public class LibroDAO {
 		
 		
 		return conexion.ejecutarInstruccionSQL(sql);
-	}
+    }
     
     public Libro buscarLector(int id,conexionBD conexion) {
 	Libro libro = null;

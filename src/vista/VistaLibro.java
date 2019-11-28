@@ -168,8 +168,6 @@ public class VistaLibro extends javax.swing.JFrame {
         buttonGroup1.add(chk_genero);
         chk_genero.setText("Genero:");
 
-        cmb_generos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuento", "Novela", "Fabula", "Tragedia", "Comedia", "Melodrama", "Ensayo", "Biografia", "Cronica" }));
-
         btn_prestamo.setText("prestamo");
         btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
