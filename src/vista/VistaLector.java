@@ -50,7 +50,7 @@ public class VistaLector extends javax.swing.JFrame {
 
         bg = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        btn_regresar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
@@ -90,13 +90,13 @@ public class VistaLector extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Regresar");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btn_regresar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/volver.png")); // NOI18N
+        btn_regresar.setFocusable(false);
+        btn_regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_regresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btn_regresar);
 
-        btn_agregar.setText("Agregar");
+        btn_agregar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/agregar.png")); // NOI18N
         btn_agregar.setFocusable(false);
         btn_agregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_agregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -107,7 +107,7 @@ public class VistaLector extends javax.swing.JFrame {
         });
         jToolBar1.add(btn_agregar);
 
-        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/eliminar.png")); // NOI18N
         btn_eliminar.setFocusable(false);
         btn_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -118,7 +118,7 @@ public class VistaLector extends javax.swing.JFrame {
         });
         jToolBar1.add(btn_eliminar);
 
-        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/actualizar.png")); // NOI18N
         btn_actualizar.setFocusable(false);
         btn_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_actualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -129,7 +129,7 @@ public class VistaLector extends javax.swing.JFrame {
         });
         jToolBar1.add(btn_actualizar);
 
-        btn_buscar.setText("Buscar");
+        btn_buscar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/busqueda.png")); // NOI18N
         btn_buscar.setFocusable(false);
         btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_buscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -325,16 +325,15 @@ public class VistaLector extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -774,6 +773,7 @@ public class VistaLector extends javax.swing.JFrame {
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_regresar;
     private javax.swing.JTextField cj_calle;
     private javax.swing.JTextField cj_colonia;
     private javax.swing.JTextField cj_idLector;
@@ -785,7 +785,6 @@ public class VistaLector extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_dia;
     private javax.swing.JComboBox<String> cmb_mes;
     private javax.swing.JComboBox<String> cmb_year;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

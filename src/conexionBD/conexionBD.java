@@ -201,4 +201,13 @@ public class conexionBD {
             
 	return rs;
     } 
+    
+    public void cerrarConexion(){
+        try {
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

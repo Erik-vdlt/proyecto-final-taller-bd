@@ -9,9 +9,15 @@ import conexionBD.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Generos;
 import modelo.Libro;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -25,6 +31,8 @@ public class VistaLibro extends javax.swing.JFrame {
     Libro lib = new Libro();
     LibroDAO ldao = new LibroDAO();
     GenerosDAO gnd = new GenerosDAO();
+    DefaultCategoryDataset datos = new DefaultCategoryDataset();
+    JFreeChart Grafica;
     conexionBD co;
     VistaPrestamo vp;
     menu menu;
@@ -80,15 +88,16 @@ public class VistaLibro extends javax.swing.JFrame {
         chk_year = new javax.swing.JRadioButton();
         chk_genero = new javax.swing.JRadioButton();
         cmb_generos = new javax.swing.JComboBox<>();
-        btn_prestamo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLibro = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         btn_regreso = new javax.swing.JButton();
+        btn_grafica = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        im_salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +122,7 @@ public class VistaLibro extends javax.swing.JFrame {
 
         cmb_tipolibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta", "Recreativos", "Cientificos", "Instructivos", "Literarios", "Poeticos", "Biograficos" }));
 
+        btn_aceptar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/agregar.png")); // NOI18N
         btn_aceptar.setText("Agregar");
         btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +130,7 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
+        btn_eliminar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/eliminar.png")); // NOI18N
         btn_eliminar.setText("Eliminar");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +138,7 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
+        btn_actualizar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/actualizar.png")); // NOI18N
         btn_actualizar.setText("Actualizar");
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +146,7 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
+        btn_buscar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/busqueda.png")); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,13 +181,6 @@ public class VistaLibro extends javax.swing.JFrame {
         buttonGroup1.add(chk_genero);
         chk_genero.setText("Genero:");
 
-        btn_prestamo.setText("prestamo");
-        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_prestamoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pn_componentesLayout = new javax.swing.GroupLayout(pn_componentes);
         pn_componentes.setLayout(pn_componentesLayout);
         pn_componentesLayout.setHorizontalGroup(
@@ -189,15 +195,13 @@ public class VistaLibro extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_componentesLayout.createSequentialGroup()
-                        .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_componentesLayout.createSequentialGroup()
                                 .addComponent(btn_eliminar)
                                 .addGap(32, 32, 32)
                                 .addComponent(btn_actualizar)
                                 .addGap(36, 36, 36)
-                                .addComponent(btn_buscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_prestamo))
+                                .addComponent(btn_buscar))
                             .addGroup(pn_componentesLayout.createSequentialGroup()
                                 .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -220,7 +224,7 @@ public class VistaLibro extends javax.swing.JFrame {
                             .addComponent(cmb_tipolibro, 0, 140, Short.MAX_VALUE)
                             .addComponent(cmb_generos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(cj_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_componentesLayout.setVerticalGroup(
             pn_componentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,8 +254,7 @@ public class VistaLibro extends javax.swing.JFrame {
                     .addComponent(btn_aceptar)
                     .addComponent(btn_eliminar)
                     .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_prestamo))
+                    .addComponent(btn_buscar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -287,7 +290,7 @@ public class VistaLibro extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btn_regreso.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/reanudar.png")); // NOI18N
+        btn_regreso.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/volver.png")); // NOI18N
         btn_regreso.setFocusable(false);
         btn_regreso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_regreso.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -298,13 +301,33 @@ public class VistaLibro extends javax.swing.JFrame {
         });
         jToolBar1.add(btn_regreso);
 
+        btn_grafica.setText("Grafica");
+        btn_grafica.setFocusable(false);
+        btn_grafica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_grafica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_grafica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_graficaActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_grafica);
+
         jMenuBar1.setBackground(new java.awt.Color(113, 173, 218));
         jMenuBar1.setForeground(new java.awt.Color(21, 35, 34));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Salir");
+
+        im_salir.setText("Salir");
+        im_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                im_salirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(im_salir);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -336,8 +359,10 @@ public class VistaLibro extends javax.swing.JFrame {
 
     private void btn_regresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresoActionPerformed
         // TODO add your handling code here:
-        //menu m = new menu();
-        setVisible(false);
+        
+        
+        new menu(co).setVisible(true);
+        this.setVisible(false);
        // m.setVisible(true);
     }//GEN-LAST:event_btn_regresoActionPerformed
 
@@ -533,11 +558,32 @@ public class VistaLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chk_yearActionPerformed
 
-    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
+    private void btn_graficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_graficaActionPerformed
         // TODO add your handling code here:
-        vp = new VistaPrestamo(co);
-        vp.setVisible(true);
-    }//GEN-LAST:event_btn_prestamoActionPerformed
+        ArrayList copia = new ArrayList();
+        ArrayList copia1 = new ArrayList();
+        ldao.grafica(co,copia,copia1);
+        for (int i = 0; i < copia.size(); i++) {
+            //System.out.println("vista.VistaLibro.btn_graficaActionPerformed() nombre: "+copia.get(i)+" numero: "+copia1.get(i));
+            datos.addValue(Integer.valueOf(copia1.get(i).toString()), "tipo libro", String.valueOf(copia.get(i)));
+        }
+        Grafica = ChartFactory.createBarChart3D("Tipos de libros Escogidos",
+                "tipos de libro", "cantidad", datos, PlotOrientation.HORIZONTAL,
+                true, true, false);
+       
+            ChartPanel Panel = new ChartPanel(Grafica);
+            JFrame Ventana = new JFrame("JFreeChart");
+            Ventana.getContentPane().add(Panel);
+            Ventana.pack();
+            Ventana.setVisible(true);
+            Ventana.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_btn_graficaActionPerformed
+
+    private void im_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_im_salirActionPerformed
+        // TODO add your handling code here:
+        co.cerrarConexion();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }//GEN-LAST:event_im_salirActionPerformed
     
     public void yearsCombo(JComboBox combo){
         for (int i = 1400; i < 2019; i++) {
@@ -611,7 +657,7 @@ public class VistaLibro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaLibro().setVisible(true);
+                //new VistaLibro().setVisible(true);
             }
         });
     }
@@ -621,7 +667,7 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_prestamo;
+    private javax.swing.JButton btn_grafica;
     private javax.swing.JButton btn_regreso;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton chk_editorial;
@@ -637,6 +683,7 @@ public class VistaLibro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_generos;
     private javax.swing.JComboBox<String> cmb_tipolibro;
     private javax.swing.JComboBox<String> cmb_years;
+    private javax.swing.JMenuItem im_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

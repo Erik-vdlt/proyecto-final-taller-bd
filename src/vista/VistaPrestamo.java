@@ -67,7 +67,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        btn_regresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cj_libro_id = new javax.swing.JTextField();
         cj_lector_id = new javax.swing.JTextField();
@@ -142,11 +142,11 @@ public class VistaPrestamo extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Regresar");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btn_regresar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/volver.png")); // NOI18N
+        btn_regresar.setFocusable(false);
+        btn_regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_regresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btn_regresar);
 
         cmb_mes_prestamo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
@@ -167,6 +167,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
         buttonGroup1.add(rd_multa);
         rd_multa.setText("Multa");
 
+        btn_agregar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/agregar.png")); // NOI18N
         btn_agregar.setText("Agregar");
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +175,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btn_eliminar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/eliminar.png")); // NOI18N
         btn_eliminar.setText("Eliminar");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +183,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btn_modificar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/actualizar.png")); // NOI18N
         btn_modificar.setText("Modificar");
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +191,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btn_buscar.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/busqueda.png")); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,11 +323,9 @@ public class VistaPrestamo extends javax.swing.JFrame {
 
         ck_genero.setText("Genero");
 
-        cmb_libro_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_libro_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
-        cmb_tipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmb_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_tipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta", "Recreativos", "Cientificos", "Instructivos", "Literarios", "Poeticos", "Biograficos" }));
 
         ck_lector_id.setText("Lector Id");
 
@@ -367,7 +369,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(ck_libro_id_prestamo)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -474,7 +476,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -483,7 +485,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addContainerGap())
         );
 
         pack();
@@ -491,8 +493,21 @@ public class VistaPrestamo extends javax.swing.JFrame {
 
     private void btn_busqueda_avanzadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_busqueda_avanzadaActionPerformed
         // TODO add your handling code here:
-        pdao.busquedaAvanzada(elegirAtributos(restablecerComponentes(ck_libro_id_prestamo,ch_multa,ck_ISBN,ck_editorial,ck_fecha_devolucion,ck_fecha_prestamo
-        ,ck_tipo_libro,ck_titulo,ck_year,ck_genero,ck_lector_id)), filtroLista(listaFiltro),co,t_prestamo);
+        ArrayList atributo = new ArrayList();
+        ArrayList filtrosB = new ArrayList();
+        atributo = elegirAtributos(restablecerComponentes(ck_libro_id_prestamo,ch_multa,ck_ISBN,ck_editorial,ck_fecha_devolucion,ck_fecha_prestamo
+        ,ck_tipo_libro,ck_titulo,ck_year,ck_genero,ck_lector_id));
+        filtrosB = filtroLista(listaFiltro);
+        
+        /*if(atributo.isEmpty()){
+            atributo.add("*");
+        }*/
+        if(filtrosB.isEmpty() || atributo.isEmpty()){
+            pane.showMessageDialog(pane, "se necesitan al menos un filtro y atributo");
+        }
+        else{
+            pdao.busquedaAvanzada(atributo, filtroLista(listaFiltro),co,t_prestamo);
+        }
     }//GEN-LAST:event_btn_busqueda_avanzadaActionPerformed
 
     private void listaFiltroValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaFiltroValueChanged
@@ -722,12 +737,16 @@ public class VistaPrestamo extends javax.swing.JFrame {
                     listaFiltros.add("Lector_Id = "+cj_lector_id.getText());
                     break;
                 case "Fecha Prestamo":
-                    //cadena2 = "fecha_prestamo";
-                    listaFiltros.add("fecha_prestamo");
+                    String y = String.valueOf(cmb_year_prestamo.getSelectedItem());
+                    String m = String.valueOf(cmb_mes_prestamo.getSelectedItem());
+                    String d = String.valueOf(cmb_dias_prestamo.getSelectedItem());
+                    listaFiltros.add("fecha_prestamo = "+y+"-"+m+"-"+d);
                     break;
                 case "Fecha Devolucion":
-                    //cadena3 = "fecha_devolucion";
-                    listaFiltros.add("fecha_devolucion");
+                    String yd = String.valueOf(cmb_year_devolucion.getSelectedItem());
+                    String md = String.valueOf(cmb_meses_devolucion.getSelectedItem());
+                    String dd = String.valueOf(cmb_dias_devolucion.getSelectedItem());
+                    listaFiltros.add("fecha_devolucion = "+yd+"-"+md+"-"+dd);
                     break;
                 case "Multa":
                     //cadena4 = "Multa";
@@ -941,6 +960,8 @@ public class VistaPrestamo extends javax.swing.JFrame {
         return retorno;
     }
     
+    
+    
      public void actualizarTabla() {
 		final String TABLA_LIBRO = "Prestamo";
 		//conexionBD conexion = new conexionBD();
@@ -1004,6 +1025,7 @@ public class VistaPrestamo extends javax.swing.JFrame {
     private javax.swing.JButton btn_busqueda_avanzada;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton btn_regresar;
     private javax.swing.JButton btn_vista;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox ch_multa;
@@ -1032,7 +1054,6 @@ public class VistaPrestamo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_tipoLibro;
     private javax.swing.JComboBox<String> cmb_year_devolucion;
     private javax.swing.JComboBox<String> cmb_year_prestamo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

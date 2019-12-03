@@ -8,6 +8,9 @@ import modelo.Libro;
 import conexionBD.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -78,6 +81,31 @@ public class LibroDAO {
             e.printStackTrace();
         }
         return  libro;
+    }
+    
+    public void grafica(conexionBD conexion,ArrayList nombre,ArrayList numero){
+       // ArrayList listaNombre = new ArrayList();
+        String consulta = "select tipo_libro,count(tipo_libro) as total from libro group by tipo_libro";
+        //DefaultTableModel modelo = new DefaultTableModel();
+        
+        ResultSet rs = conexion.consultarAvanzada(consulta);
+        
+        //modelo.setColumnIdentifiers( new Object[] {"tipo_libro", "Total"});
+        
+        
+        try {
+            while(rs.next()){
+                //modelo.addRow(new Object[]{
+                  //      rs.getString(1),
+                    //    rs.getString(2)});
+                nombre.add(rs.getString(1));
+                numero.add(rs.getString(2));
+                //completo = true;
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //return listaConsulta;
     }
     
     public boolean consultaLector(String clave,String valor,JTable tabla,conexionBD conexion){

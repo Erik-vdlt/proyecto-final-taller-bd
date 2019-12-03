@@ -142,9 +142,18 @@ public class PrestamoDAO {
         cad = cad.replace("[", " ");
         cad = cad.replace("]", " ");
         boolean completo = false;
+        String instruccionSQL = "";
         //+cad+
-        String instruccionSQL = "select "+cad+" from prestamo"
+        
+        if(filtros.size() == 1){
+            instruccionSQL = "select "+cad+" from libro"
+                +" inner join prestamo on "+filtros.get(0);
+        }
+        else if(filtros.size() == 2){
+            instruccionSQL = "select "+cad+" from prestamo"
                 +" inner join libro on "+filtros.get(0)+" and "+filtros.get(1);
+        }
+        
         
         ResultSet rs = co.consultarAvanzada(instruccionSQL);
         Object columnas[] = new Object[atributos.size()];

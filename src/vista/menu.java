@@ -14,6 +14,9 @@ public class menu extends javax.swing.JFrame {
     conexionBD.conexionBD o;
     //menu m = new menu();
     VistaLector vl;
+    VistaLibro l;
+    VistaPrestamo vp;
+    menu m;
     
     
     /**
@@ -45,6 +48,8 @@ public class menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         cj_libro = new javax.swing.JButton();
         cj_lector = new javax.swing.JButton();
+        btn_prestamo = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -63,7 +68,7 @@ public class menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(jLabel1)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,15 +94,28 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        btn_prestamo.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/prestamo.jpg")); // NOI18N
+        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prestamoActionPerformed(evt);
+            }
+        });
+
+        btn_salir.setIcon(new javax.swing.ImageIcon("/home/erik/NetBeansProjects/ProyectoFinal_BD/imagenes/salir.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(cj_libro)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(cj_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cj_lector)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cj_lector)
+                    .addComponent(btn_salir))
                 .addGap(33, 33, 33))
         );
         jPanel2Layout.setVerticalGroup(
@@ -107,7 +125,11 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cj_lector)
                     .addComponent(cj_libro))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_prestamo)
+                    .addComponent(btn_salir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu3.setText("File");
@@ -138,7 +160,8 @@ public class menu extends javax.swing.JFrame {
 
     private void cj_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cj_libroActionPerformed
         // TODO add your handling code here:
-        VistaLibro l = new VistaLibro(o);
+        System.out.println("menu menu --> "+m);
+        l = new VistaLibro(o);
         setVisible(false);
         l.setVisible(true);
     }//GEN-LAST:event_cj_libroActionPerformed
@@ -149,6 +172,13 @@ public class menu extends javax.swing.JFrame {
         setVisible(false);
         vl.setVisible(true);
     }//GEN-LAST:event_cj_lectorActionPerformed
+
+    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
+        // TODO add your handling code here:
+        vp = new VistaPrestamo(o);
+        setVisible(false);
+        vp.setVisible(true);
+    }//GEN-LAST:event_btn_prestamoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +216,8 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_prestamo;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JButton cj_lector;
     private javax.swing.JButton cj_libro;
     private javax.swing.JLabel jLabel1;
